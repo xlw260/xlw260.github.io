@@ -31,7 +31,7 @@
 					<ul>
 						<li v-for="item in musiclist">
 							<div id="music_name">
-								<p>
+								<p v-cloak>
 									<a href="javascript:;" @click="musicPlay(item.id)" @click="openurl" @click="mvplay()">
 										<img src="img/bofang.png">
 									</a>
@@ -39,7 +39,7 @@
 								</p>
 							</div>
 							<div id="music_singer">
-								<span>
+								<span v-cloak>
 
 									{{ item.artists[0].name }}
 								</span>
@@ -79,10 +79,10 @@
 						<li v-for="item in hotcom">
 							<div>
 								<img :src="item.user.avatarUrl" alt="">
-								<span>{{ item.user.nickname }}</span>
+								<span v-cloak>{{ item.user.nickname }}</span>
 								<br>
 								<br>
-								<p>{{ item.content }}</p>
+								<p v-cloak>{{ item.content }}</p>
 							</div>
 
 

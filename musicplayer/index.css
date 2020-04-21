@@ -10,7 +10,9 @@ li {
 ul li {
 	list-style: none;
 }
-
+[v-cloak]{
+	display:none;
+}
 input {
 	border: none;
 	-webkit-appearance: none;
