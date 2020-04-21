@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8 ">
+		<title>yinyuew</title>
+		<link rel="stylesheet" type="text/css" href="index.css" />
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+	<!-- 顶部栏 -->
+		<div id="app" :class="{Backgrpund_opacity:BackgrpundShow}">
+
+			<div id="top">
+				<img src="img/yinle.png" class="an">
+				<p>某易云</p>
+			</div>
+			<!-- 搜索框 -->
+			<div id="input2">
+				<input type="text" class="input1" v-model="musicname" @keyup.enter="seachermusic">
+				<a class="fRight" @click="seachermusic">
+					<img src="img/search.png">
+				</a>
+			</div>
+
+			<!-- 歌曲列表区 -->
+			<div id="music_list">
+				<h3 v-show="partshow">歌曲列表</h3>
+				<div id="music_list_hiden" class="nui-scroll" v-show="partshow">
+
+					<ul>
+						<li v-for="item in musiclist">
+							<div id="music_name">
+								<p>
+									<a href="javascript:;" @click="musicPlay(item.id)" @click="openurl" @click="mvplay()">
+										<img src="img/bofang.png">
+									</a>
+									{{ item.name }}
+								</p>
+							</div>
+							<div id="music_singer">
+								<span>
+
+									{{ item.artists[0].name }}
+								</span>
+							</div>
+							<div id="music_time">
+								<span>
+
+								</span>
+							</div>
+							<div id="mv" v-if="item.mvid!=0" @click="playMv(item.mvid)">
+								<a href="javascript:;" @click="StopPause"><img src="img/mv.png"></a>
+							</div>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+
+
+			<!-- 歌曲专辑图片 -->
+			<div id="music_data" :class="{Backgrpund_opacity:BackgrpundShow}">
+				<span id="">
+					<img src="img/yinle.png" v-if="picchange1" class="an">
+				</span>
+				<img :src="musicurl" v-if="picchange" :class="{an:isplay}">
+			</div>
+
+
+			<!-- 歌曲评论 -->
+			<div id="music_comment" v-show="allshow">
+
+				<h3 style="margin-bottom: 5px;">热门评论</h3>
+				<div id="music_comment_hiden" class="nui-scroll">
+
+
+					<ul>
+						<li v-for="item in hotcom">
+							<div>
+								<img :src="item.user.avatarUrl" alt="">
+								<span>{{ item.user.nickname }}</span>
+								<br>
+								<br>
+								<p>{{ item.content }}</p>
+							</div>
+
+
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- 底部控制栏 -->
+			<div id="music_button_contor">
+				<!-- <a><img src="img/shangyiq(2).png"></a> -->
+				<audio v-show="allshow" id="mvplays" ref="audio" :src="music_url" @play="play" @pause="pause" controls="controls"
+				 autoplay="autoplay"></audio>
+
+				<!-- <a><img src="img/shangyiq(2).png" class="flip-horizontal"></a> 
+				<a><img src="img/yinliang_1.png" class="visco"></a>
+				<a><img src="img/vynil.png" class="visco"></a> -->
+
+
+			</div>
+			<!-- mv区域 -->
+			<div id="mv_con" v-show="isshow" style="display: none;">
+				<div id="mv_play">
+					<video id="vide" width="800" height="500" :src="mvsrc" controls="controls" autoplay="autoplay">
+
+					</video>
+					<div id="mask" @click="hide" @click="playPause">
+					</div>
+				</div>
+
+			</div>
+
+
+
+
+		</div>
+
+
+
+
+
+		<script src="./js/new_file.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+	</body>
+
+
+</html>
