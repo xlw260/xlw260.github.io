@@ -2,7 +2,7 @@ var app = new Vue({
 	el: "#app",
 	data: {
 		//搜索内容
-		musicname: "搜索一下",
+		musicname: "",
 		//歌曲列表
 		musiclist: [],
 		//专辑图片地址
@@ -40,7 +40,9 @@ var app = new Vue({
 				.then(function(response) {
 						console.log(response);
 						that.musiclist = response.data.result.songs;
-						that.partshow = true;
+						that.musicname = "";
+                        
+                        that.partshow = true;
 					},
 					function(err) {}
 				);

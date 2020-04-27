@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="UTF-8 ">
-		<title>yinyuew</title>
+		<title>某易云</title>
 		<link rel="stylesheet" type="text/css" href="index.css" />
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</head>
@@ -17,7 +17,7 @@
 			</div>
 			<!-- 搜索框 -->
 			<div id="input2">
-				<input type="text" class="input1" v-model="musicname" @keyup.enter="seachermusic">
+				<input type="text" class="input1" v-model="musicname" @keyup.enter="seachermusic"  placeholder="搜索一下">
 				<a class="fRight" @click="seachermusic">
 					<img src="img/search.png">
 				</a>
@@ -31,7 +31,7 @@
 					<ul>
 						<li v-for="item in musiclist">
 							<div id="music_name">
-								<p v-cloak>
+								<p>
 									<a href="javascript:;" @click="musicPlay(item.id)" @click="openurl" @click="mvplay()">
 										<img src="img/bofang.png">
 									</a>
@@ -39,7 +39,7 @@
 								</p>
 							</div>
 							<div id="music_singer">
-								<span v-cloak>
+								<span>
 
 									{{ item.artists[0].name }}
 								</span>
@@ -79,10 +79,10 @@
 						<li v-for="item in hotcom">
 							<div>
 								<img :src="item.user.avatarUrl" alt="">
-								<span v-cloak>{{ item.user.nickname }}</span>
+								<span>{{ item.user.nickname }}</span>
 								<br>
 								<br>
-								<p v-cloak>{{ item.content }}</p>
+								<p>{{ item.content }}</p>
 							</div>
 
 
